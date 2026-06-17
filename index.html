@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spotify Taste Connector — Live This Week ATX</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0a0a0a; color: #f0f0f0; font-family: system-ui, -apple-system, sans-serif; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 2rem 1rem; }
+  .card { background: #111; border: 0.5px solid #222; border-radius: 16px; padding: 2rem; max-width: 560px; width: 100%; }
+  h1 { font-size: 22px; font-weight: 600; margin-bottom: 4px; }
+  .sub { font-size: 13px; color: #555; margin-bottom: 2rem; }
+  .step { margin-bottom: 1.5rem; }
+  .step-label { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: #d4f23c; margin-bottom: 8px; }
+  .step p { font-size: 13px; color: #888; line-height: 1.6; margin-bottom: 10px; }
+  .step a { color: #d4f23c; }
+  input { width: 100%; height: 42px; background: #1a1a1a; border: 0.5px solid #333; border-radius: 8px; padding: 0 14px; font-size: 13px; color: #f0f0f0; font-family: inherit; margin-bottom: 8px; }
+  input:focus { outline: none; border-color: #d4f23c; }
+  input::placeholder { color: #444; }
+  .btn { width: 100%; height: 44px; background: #d4f23c; border: none; border-radius: 8px; font-size: 14px; font-weight: 600; color: #0a0a0a; cursor: pointer; font-family: inherit; transition: opacity .15s; }
+  .btn:hover { opacity: .85; }
+  .btn-secondary { background: transparent; border: 0.5px solid #333; color: #888; margin-top: 8px; height: 40px; font-size: 13px; }
+  .btn-secondary:hover { border-color: #555; color: #ccc; opacity: 1; }
+  .status { font-size: 13px; padding: 10px 14px; border-radius: 8px; margin: 10px 0; line-height: 1.5; }
+  .status.error { background: rgba(255,80,80,.08); border: 0.5px solid rgba(255,80,80,.2); color: #ff8080; }
+  .status.success { background: rgba(80,200,120,.08); border: 0.5px solid rgba(80,200,120,.2); color: #80d4a0; }
+  .instructions { background: #0d1400; border: 0.5px solid #1e2800; border-radius: 8px; padding: 14px; margin-bottom: 1rem; }
+  .instructions ol { padding-left: 1.2rem; }
+  .instructions li { font-size: 13px; color: #888; line-height: 2; }
+  .instructions li b { color: #d4f23c; }
+  .instructions li code { background: #1a1a1a; padding: 2px 6px; border-radius: 4px; font-size: 11px; color: #aaa; word-break: break-all; }
+  .redirect-box { background: #1a1a1a; border: 0.5px solid #333; border-radius: 6px; padding: 8px 12px; font-size: 12px; color: #d4f23c; font-family: monospace; word-break: break-all; margin: 6px 0 4px; cursor: pointer; }
+  .redirect-box:hover { border-color: #d4f23c; }
+  .copy-hint { font-size: 11px; color: #444; margin-bottom: 10px; }
+  .artist-grid { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1rem; }
+  .chip { font-size: 12px; padding: 4px 10px; background: #1a1a1a; border: 0.5px solid #2a2a2a; border-radius: 999px; color: #ccc; }
+  .chip.high { border-color: rgba(212,242,60,.4); color: #d4f23c; }
+  .section-label { font-size: 12px; color: #666; margin-bottom: 6px; margin-top: 12px; }
+  .export-box { background: #0d0d0d; border: 0.5px solid #222; border-radius: 8px; padding: 12px; font-size: 11px; color: #555; font-family: monospace; max-height: 160px; overflow-y: auto; white-space: pre-wrap; margin-bottom: 10px; }
+  .badge { display: inline-block; font-size: 10px; padding: 2px 7px; border-radius: 999px; background: rgba(212,242,60,.15); color: #d4f23c; border: 0.5px solid rgba(212,242,60,.3); margin-left: 8px; vertical-align: 2px; }
+  #section-results { display: none; }
+  .divider { height: 0.5px; background: #1e1e1e; margin: 1.5rem 0; }
+  .loading { color: #555; font-size: 13px; padding: 1rem 0; }
+  .spinner { display: inline-block; width: 14px; height: 14px; border: 1.5px solid #333; border-top-color: #d4f23c; border-radius: 50%; animation: spin .7s linear infinite; margin-right: 8px; vertical-align: -2px; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+</style>
+</head>
+<body>
+<div class="card">
+  <h1>Spotify Taste Connector <span class="badge">Live This Week ATX</span></h1>
+  <p class="sub">Connect your Spotify to power personalized concert matching</p>
+  <div id="section-setup">
+    <div class="step">
+      <div class="step-label">Step 1 — Create your Spotify app (one time only)</div>
+      <div class="instructions">
+        <ol>
+          <li>Go to <a href="https://developer.spotify.com/dashboard" target="_blank">developer.spotify.com/dashboard</a></li>
+          <li>Click <b>Create app</b></li>
+          <li>Name it anything, e.g. <b>Rashel's Concerts</b></li>
+          <li>Set the <b>Redirect URI</b> to exactly this — click to copy:<br>
+            <div class="redirect-box" id="redirect-display" onclick="copyRedirect()">loading...</div>
+            <div class="copy-hint" id="copy-hint">Click the box above to copy it</div>
+          </li>
+          <li>Check <b>Web API</b>, then click <b>Save</b></li>
+          <li>Open the app then Settings then copy your <b>Client ID</b></li>
+        </ol>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-label">Step 2 — Paste your Client ID and connect</div>
+      <input type="text" id="client-id" placeholder="Paste Client ID here..." />
+      <button class="btn" onclick="startAuth()">Connect to Spotify</button>
+    </div>
+    <div id="setup-status"></div>
+  </div>
+  <div id="section-results">
+    <div class="status success" id="connected-msg">Connected — pulling your taste data...</div>
+    <div id="loading-indicator" class="loading"><span class="spinner"></span>Fetching your top artists and tracks...</div>
+    <div id="results-body" style="display:none">
+      <div class="section-label">Your top artists (weighted by listening)</div>
+      <div class="artist-grid" id="top-artists"></div>
+      <div class="section-label">Your top genres</div>
+      <div class="artist-grid" id="top-genres"></div>
+      <div class="divider"></div>
+      <div class="step-label" style="font-size:11px">Copy your taste profile and paste into Claude</div>
+      <p style="font-size:13px;color:#888;margin-bottom:8px">Claude will use this to power your concert matching.</p>
+      <div class="export-box" id="export-json"></div>
+      <button class="btn" onclick="copyProfile()">Copy taste profile</button>
+      <button class="btn btn-secondary" onclick="resetApp()">Reconnect / start over</button>
+    </div>
+  </div>
+</div>
+<script>
+function generateRandomString(length) {
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let result = '';
+  const values = crypto.getRandomValues(new Uint8Array(length));
+  values.forEach(v => result += chars[v % chars.length]);
+  return result;
+}
+async function generateCodeChallenge(verifier) {
+  const data = new TextEncoder().encode(verifier);
+  const digest = await crypto.subtle.digest('SHA-256', data);
+  return btoa(String.fromCharCode(...new Uint8Array(digest))).replace(/+/g, '-').replace(///g, '_').replace(/=+$/, '');
+}
+const REDIRECT_URI = window.location.href.split('?')[0].split('#')[0];
+const SCOPES = 'user-top-read user-read-recently-played';
+document.getElementById('redirect-display').textContent = REDIRECT_URI;
+const savedId = localStorage.getItem('spotify_client_id');
+if (savedId) document.getElementById('client-id').value = savedId;
+function copyRedirect() {
+  navigator.clipboard.writeText(REDIRECT_URI).then(() => {
+    document.getElementById('copy-hint').textContent = 'Copied!';
+    setTimeout(() => { document.getElementById('copy-hint').textContent = 'Click the box above to copy it'; }, 2500);
+  });
+}
+async function startAuth() {
+  const clientId = document.getElementById('client-id').value.trim();
+  if (!clientId) { document.getElementById('setup-status').innerHTML = '<div class="status error">Please paste your Client ID first.</div>'; return; }
+  localStorage.setItem('spotify_client_id', clientId);
+  const verifier = generateRandomString(64);
+  const challenge = await generateCodeChallenge(verifier);
+  localStorage.setItem('pkce_verifier', verifier);
+  const params = new URLSearchParams({ client_id: clientId, response_type: 'code', redirect_uri: REDIRECT_URI, scope: SCOPES, code_challenge_method: 'S256', code_challenge: challenge, show_dialog: 'true' });
+  window.location = 'https://accounts.spotify.com/authorize?' + params;
+}
+async function exchangeCode(code) {
+  const clientId = localStorage.getItem('spotify_client_id');
+  const verifier = localStorage.getItem('pkce_verifier');
+  const res = await fetch('https://accounts.spotify.com/api/token', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams({ client_id: clientId, grant_type: 'authorization_code', code, redirect_uri: REDIRECT_URI, code_verifier: verifier }) });
+  if (!res.ok) { const err = await res.json().catch(()=>({})); throw new Error(err.error_description || 'Token error ' + res.status); }
+  return res.json();
+}
+async function fetchSpotify(endpoint, token) {
+  const res = await fetch('https://api.spotify.com/v1' + endpoint, { headers: { Authorization: 'Bearer ' + token } });
+  if (!res.ok) { console.warn('Spotify API ' + res.status); return null; }
+  return res.json();
+}
+async function loadProfile(token) {
+  document.getElementById('section-setup').style.display = 'none';
+  document.getElementById('section-results').style.display = 'block';
+  try {
+    const me = await fetchSpotify('/me', token);
+    if (!me) throw new Error('Could not load your Spotify profile.');
+    document.getElementById('connected-msg').textContent = 'Connected as ' + (me.display_name || me.id);
+    const topArtistsShort = await fetchSpotify('/me/top/artists?limit=50&time_range=short_term', token);
+    const topArtistsMed = await fetchSpotify('/me/top/artists?limit=50&time_range=medium_term', token);
+    const topTracksShort = await fetchSpotify('/me/top/tracks?limit=50&time_range=short_term', token);
+    const recent = await fetchSpotify('/me/player/recently-played?limit=50', token);
+    const scores = {};
+    (topArtistsShort?.items||[]).forEach((a,i)=>{ scores[a.name]=(scores[a.name]||0)+(50-i)*3; });
+    (topArtistsMed?.items||[]).forEach((a,i)=>{ scores[a.name]=(scores[a.name]||0)+(50-i); });
+    (topTracksShort?.items||[]).forEach(t=>{ (t.artists||[]).forEach(a=>{ scores[a.name]=(scores[a.name]||0)+10; }); });
+    (recent?.items||[]).forEach(i=>{ (i.track?.artists||[]).forEach(a=>{ scores[a.name]=(scores[a.name]||0)+5; }); });
+    const sorted = Object.entries(scores).sort((a,b)=>b[1]-a[1]);
+    const genreMap = {};
+    (topArtistsMed?.items||[]).forEach(a=>{ (a.genres||[]).forEach(g=>{ genreMap[g]=(genreMap[g]||0)+1; }); });
+    const topGenres = Object.entries(genreMap).sort((a,b)=>b[1]-a[1]).slice(0,12).map(e=>e[0]);
+    const topTracks = (topTracksShort?.items||[]).slice(0,20).map(t=>({ name: t.name, artist: t.artists?.[0]?.name||'' }));
+    const recentArtists = [...new Set((recent?.items||[]).map(i=>i.track?.artists?.[0]?.name).filter(Boolean))].slice(0,20);
+    const profile = { generatedAt: new Date().toISOString(), spotifyUser: me.display_name||me.id, topArtists: sorted.slice(0,40).map(([name,score])=>({name,score})), topGenres, topTracks, recentArtists };
+    document.getElementById('loading-indicator').style.display = 'none';
+    document.getElementById('results-body').style.display = 'block';
+    document.getElementById('top-artists').innerHTML = sorted.slice(0,10).map(([n])=>'<span class="chip high">'+n+'</span>').join('')+sorted.slice(10,30).map(([n])=>'<span class="chip">'+n+'</span>').join('');
+    document.getElementById('top-genres').innerHTML = topGenres.length ? topGenres.map(g=>'<span class="chip">'+g+'</span>').join('') : '<span style="color:#444;font-size:13px">None found</span>';
+    document.getElementById('export-json').textContent = JSON.stringify(profile, null, 2);
+  } catch(e) {
+    document.getElementById('connected-msg').className = 'status error';
+    document.getElementById('connected-msg').textContent = 'Error: ' + e.message;
+    document.getElementById('loading-indicator').style.display = 'none';
+  }
+}
+function copyProfile() {
+  const text = document.getElementById('export-json').textContent;
+  navigator.clipboard.writeText(text).then(() => { const btn = event.target; btn.textContent = 'Copied!'; setTimeout(()=>btn.textContent='Copy taste profile',2000); });
+}
+function resetApp() { localStorage.removeItem('pkce_verifier'); window.location = REDIRECT_URI; }
+window.addEventListener('load', async () => {
+  const params = new URLSearchParams(window.location.search);
+  const code = params.get('code');
+  const error = params.get('error');
+  if (error) { document.getElementById('setup-status').innerHTML = '<div class="status error">Spotify returned: '+error+'. Try again.</div>'; window.history.replaceState(null,'',window.location.pathname); return; }
+  if (code) {
+    window.history.replaceState(null,'',window.location.pathname);
+    try { const tokens = await exchangeCode(code); loadProfile(tokens.access_token); }
+    catch(e) { document.getElementById('setup-status').innerHTML = '<div class="status error">Auth failed: '+e.message+'</div>'; }
+  }
+});
+</script>
+</body>
+</html>
