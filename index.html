@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0048)file:///Users/rashelochoa/Downloads/index_1.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -25,17 +23,30 @@ input[type=text]{width:100%;height:44px;background:#2a2a2a;border:1.5px solid #4
 input[type=text]::placeholder{color:#888}
 input[type=text]:focus{outline:none;border-color:#d4f23c}
 
-.scrollrow{display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:2px;margin-bottom:.8rem}
-.scrollrow::-webkit-scrollbar{display:none}
-.seg-ctrl{display:flex;background:#2e2e2e;border:1.5px solid #444;border-radius:12px;padding:4px;margin-bottom:.8rem;gap:3px}
+.week-row{display:flex;align-items:center;gap:8px;margin-bottom:.8rem}
+.seg-ctrl{display:flex;background:#2e2e2e;border:1.5px solid #444;border-radius:12px;padding:4px;gap:3px;flex:1}
 .tab{flex:1;height:38px;padding:0 10px;font-size:13px;font-weight:600;border-radius:9px;border:none;background:transparent;color:#ccc;cursor:pointer;font-family:'DM Sans',system-ui,sans-serif;white-space:nowrap;transition:all .15s;letter-spacing:-.01em}
 .tab:hover:not(.on){color:#fff;background:rgba(255,255,255,.08)}
 .tab.on{background:#d4f23c;color:#0a0a0a;font-weight:700;box-shadow:0 1px 6px rgba(0,0,0,.5)}
-.scrollrow{display:flex;gap:4px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding:4px;margin-bottom:.8rem;background:#2e2e2e;border:1.5px solid #444;border-radius:12px}
+
+.view-toggle{display:flex;gap:4px;flex-shrink:0}
+.vtbtn{width:38px;height:38px;border-radius:9px;border:1.5px solid #444;background:#2e2e2e;color:#888;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s;flex-shrink:0}
+.vtbtn:hover:not(.on){background:#333;color:#ccc;border-color:#555}
+.vtbtn.on{background:#d4f23c;border-color:#d4f23c;color:#0a0a0a}
+
+.scrollrow{display:flex;gap:4px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding:4px;margin-bottom:.5rem;background:#2e2e2e;border:1.5px solid #444;border-radius:12px}
 .scrollrow::-webkit-scrollbar{display:none}
 .pill{height:30px;padding:0 14px;font-size:12px;font-weight:600;border-radius:8px;border:none;background:transparent;color:#ccc;cursor:pointer;font-family:'DM Sans',system-ui,sans-serif;white-space:nowrap;flex-shrink:0;transition:all .12s}
 .pill:hover:not(.on){color:#fff;background:rgba(255,255,255,.08)}
 .pill.on{background:#d4f23c;color:#0a0a0a;font-weight:700}
+
+.vibe-row{display:flex;gap:6px;margin-bottom:.8rem;align-items:center;flex-wrap:wrap}
+.vibe-label{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#555;flex-shrink:0}
+.vibe-pill{height:30px;padding:0 13px;font-size:12px;font-weight:600;border-radius:20px;border:1.5px solid #333;background:#1e1e1e;color:#777;cursor:pointer;font-family:'DM Sans',system-ui,sans-serif;white-space:nowrap;transition:all .12s;display:flex;align-items:center;gap:5px}
+.vibe-pill:hover:not(.on){color:#ccc;border-color:#555;background:#2a2a2a}
+.vibe-pill.on.vp-feelgood{background:#2a2500;border-color:#ffd93d;color:#ffd93d}
+.vibe-pill.on.vp-passingon{background:#00182a;border-color:#5b9eff;color:#5b9eff}
+.vibe-pill.on.vp-appreciative{background:#1e1530;border-color:#b39ddb;color:#b39ddb}
 
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:1.5rem}
 .stat{background:#2a2a2a;border-radius:12px;padding:12px 10px 10px;border:1.5px solid #444}
@@ -48,7 +59,6 @@ input[type=text]:focus{outline:none;border-color:#d4f23c}
 
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
 
-/* CARDS — dark surface, crisp contrast */
 .card{background:#2a2a2a;border:1.5px solid #3a3a3a;border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:border-color .15s,transform .1s,box-shadow .15s;box-shadow:0 4px 16px rgba(0,0,0,.5),0 1px 4px rgba(0,0,0,.4)}
 .card:hover{box-shadow:0 8px 24px rgba(0,0,0,.6),0 2px 8px rgba(0,0,0,.5);border-color:#484848}
 .card:active{transform:scale(.99)}
@@ -63,7 +73,6 @@ input[type=text]:focus{outline:none;border-color:#d4f23c}
 .card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:6px}
 .card-artist{font-size:15px;font-weight:600;color:#fff;line-height:1.2;flex:1}
 
-/* Genre badges — vivid, high contrast on dark */
 .genre-tag{font-size:10px;font-weight:700;padding:3px 9px;border-radius:999px;white-space:nowrap;flex-shrink:0;margin-top:2px;letter-spacing:.02em}
 .g-rock{background:#ff4d4d;color:#fff}
 .g-indie{background:#3dba6b;color:#fff}
@@ -80,6 +89,8 @@ input[type=text]:focus{outline:none;border-color:#d4f23c}
 .g-rb{background:#ff5c8a;color:#fff}
 .g-americana{background:#e8831a;color:#fff}
 .g-alternative{background:#2ec99e;color:#fff}
+.g-comedy{background:#ff9f43;color:#fff}
+.g-various{background:#636e72;color:#fff}
 
 .badge{display:inline-flex;align-items:center;gap:3px;font-size:10px;font-weight:700;padding:3px 9px;border-radius:999px;width:fit-content;margin-top:1px;letter-spacing:.02em}
 .badge-high{background:#d4f23c;color:#1a2a00}
@@ -108,6 +119,12 @@ input[type=text]:focus{outline:none;border-color:#d4f23c}
 .cbtn:hover{background:#333;border-color:#666;color:#fff}
 .cbtn.going{background:#1c2d00;border-color:#7aaa00;color:#d4f23c}
 
+.mood-tags{display:flex;gap:4px;flex-wrap:wrap;margin-top:3px}
+.mood-tag{font-size:9px;font-weight:700;padding:2px 7px;border-radius:999px;letter-spacing:.04em;text-transform:uppercase}
+.mt-feelgood{background:#2a2500;border:1px solid #ffd93d44;color:#ffd93d}
+.mt-passingon{background:#00182a;border:1px solid #5b9eff44;color:#5b9eff}
+.mt-appreciative{background:#1e1530;border:1px solid #b39ddb44;color:#b39ddb}
+
 .going-section{background:#1a2600;border:1.5px solid #3a5a00;border-radius:16px;padding:1rem 1rem .75rem;margin-bottom:1.5rem;display:none}
 .going-section.visible{display:block}
 .going-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem}
@@ -125,6 +142,7 @@ input[type=text]:focus{outline:none;border-color:#d4f23c}
 .gtix-btn:hover{opacity:.85}
 .gungo-btn{height:24px;width:24px;border-radius:6px;border:1.5px solid #3a5a00;background:transparent;color:#5a8a00;cursor:pointer;font-family:'DM Sans',system-ui,sans-serif;display:flex;align-items:center;justify-content:center;font-size:14px;transition:all .12s;flex-shrink:0}
 .gungo-btn:hover{background:#2a0a0a;border-color:#7a2020;color:#ff7070}
+
 .tooltip-wrap{position:relative;display:inline-flex;align-items:center;gap:5px;cursor:default}
 .tooltip-icon{width:18px;height:18px;border-radius:50%;background:#2e2e2e;color:#d4f23c;font-size:11px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;border:1.5px solid #d4f23c;transition:all .12s}
 .tooltip-icon:hover{background:#d4f23c;color:#0a0a0a}
@@ -134,15 +152,40 @@ input[type=text]:focus{outline:none;border-color:#d4f23c}
 .tooltip-body{font-size:11px;color:#aaa;line-height:1.5;margin-bottom:8px}
 .tooltip-artists{display:flex;flex-direction:column;gap:3px}
 .tooltip-artist{font-size:11px;color:#d4f23c;font-weight:600}
-.saved-row{display:flex;justify-content:space-between;align-items:center;padding:10px 13px;background:#2a2a2a;border-radius:12px;margin-bottom:6px;border:1.5px solid #3a3a3a}
-.saved-artist{font-size:13px;font-weight:600;color:#fff}
-.saved-detail{font-size:11px;color:#999;margin-top:1px}
 
 .sync-note{font-size:10px;color:#888;text-align:right;margin-bottom:.75rem}
 .sync-note a{color:#aaa;text-decoration:none}
 .sync-note a:hover{color:#fff}
-
 .empty{color:#555;font-size:13px;padding:3rem 0;font-style:italic;text-align:center}
+
+/* In-town compact rows */
+.in-town-list{display:flex;flex-direction:column;gap:6px}
+.in-town-card{background:#1e1e1e;border:1px solid #282828;border-radius:12px;padding:10px 13px;display:flex;align-items:center;justify-content:space-between;gap:10px;transition:opacity .15s}
+.in-town-card.itc-dim{opacity:.25}
+.itc-left{flex:1;min-width:0}
+.itc-artist{font-size:13px;font-weight:600;color:#bbb;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.itc-meta{font-size:11px;color:#555;margin-top:2px}
+.itc-right{flex-shrink:0}
+.itc-link{font-size:11px;font-weight:700;color:#666;text-decoration:none;border:1px solid #333;border-radius:6px;padding:4px 10px;transition:all .1s;white-space:nowrap}
+.itc-link:hover{color:#fff;border-color:#666}
+
+/* Schedule grid */
+.schedule-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-bottom:1rem;border-radius:12px;border:1.5px solid #252525}
+.schedule-table{border-collapse:collapse;min-width:100%}
+.schedule-table th{background:#222;border:1px solid #2a2a2a;padding:8px 10px;font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#888;white-space:nowrap;text-align:center;min-width:120px}
+.schedule-table th:first-child{min-width:72px;background:#1e1e1e;position:sticky;left:0;z-index:2}
+.schedule-table .day-col{background:#1a1a1a;border:1px solid #252525;padding:8px 10px;font-size:11px;font-weight:700;color:#666;white-space:nowrap;text-align:right;position:sticky;left:0;z-index:1;background:#1a1a1a}
+.schedule-table td{border:1px solid #1e1e1e;padding:6px 7px;vertical-align:top;background:#111;min-width:120px}
+.sch-show{display:block;padding:5px 7px;border-radius:7px;margin-bottom:3px;font-size:11px;font-weight:600;line-height:1.3;text-decoration:none;transition:opacity .12s}
+.sch-show:last-child{margin-bottom:0}
+.sch-show.s-high{background:#1c2a00;border:1px solid #4a7a00;color:#c8e84a}
+.sch-show.s-medium{background:#001830;border:1px solid #1a4a7a;color:#7ab8ff}
+.sch-show.s-none{background:#222;border:1px solid #2e2e2e;color:#888}
+.sch-show:hover{opacity:.7}
+.sch-show.vibe-dim{opacity:.12}
+.sched-legend{font-size:10px;color:#444;margin-bottom:1.5rem;display:flex;gap:12px;flex-wrap:wrap;padding:0 2px}
+.sleg{display:flex;align-items:center;gap:5px}
+.sleg-dot{width:10px;height:10px;border-radius:2px;flex-shrink:0}
 
 .fab{position:fixed;bottom:calc(env(safe-area-inset-bottom,0px) + 1.5rem);right:1.25rem;width:50px;height:50px;border-radius:50%;background:#d4f23c;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(212,242,60,.25);z-index:100;transition:transform .1s}
 .fab:active{transform:scale(.92)}
@@ -160,17 +203,34 @@ input[type=text]:focus{outline:none;border-color:#d4f23c}
     <input type="text" id="search" placeholder="Search artist, venue, genre…" oninput="render()">
   </div>
 
-  <div class="seg-ctrl" id="week-tabs">
-    <button class="tab on" data-week="this" onclick="setWeek(&#39;this&#39;,this)">This week</button>
-    <button class="tab" data-week="next" onclick="setWeek(&#39;next&#39;,this)">Next week</button>
-    <button class="tab" data-week="month" onclick="setWeek(&#39;month&#39;,this)">Next 30 days</button>
+  <div class="week-row">
+    <div class="seg-ctrl" id="week-tabs">
+      <button class="tab on" data-week="this" onclick="setWeek('this',this)">This week</button>
+      <button class="tab" data-week="next" onclick="setWeek('next',this)">Next week</button>
+      <button class="tab" data-week="month" onclick="setWeek('month',this)">Next 30 days</button>
+    </div>
+    <div class="view-toggle">
+      <button class="vtbtn on" id="btn-cards" onclick="setView('cards')" title="Card view">
+        <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+      </button>
+      <button class="vtbtn" id="btn-schedule" onclick="setView('schedule')" title="Full schedule grid">
+        <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><path stroke-linecap="round" d="M3 6h18M3 10h18M3 14h18M3 18h18"/></svg>
+      </button>
+    </div>
   </div>
 
-  <div class="scrollrow" id="day-pills"><button class="pill on" onclick="setDay(&#39;all&#39;,this)">All dates</button><button class="pill" onclick="setDay(&#39;Wed Jun 17&#39;,this)">Wed Jun 17</button><button class="pill" onclick="setDay(&#39;Thu Jun 18&#39;,this)">Thu Jun 18</button><button class="pill" onclick="setDay(&#39;Fri Jun 19&#39;,this)">Fri Jun 19</button><button class="pill" onclick="setDay(&#39;Sat Jun 20&#39;,this)">Sat Jun 20</button><button class="pill" onclick="setDay(&#39;Sun Jun 21&#39;,this)">Sun Jun 21</button></div>
+  <div class="scrollrow" id="day-pills"></div>
+
+  <div class="vibe-row">
+    <span class="vibe-label">Vibe</span>
+    <button class="vibe-pill vp-feelgood" onclick="setVibe('feel-good',this)">🎉 Feel Good</button>
+    <button class="vibe-pill vp-passingon" onclick="setVibe('passing-on',this)">🌊 Passing On</button>
+    <button class="vibe-pill vp-appreciative" onclick="setVibe('appreciative',this)">🌿 Appreciative</button>
+  </div>
 
   <div class="stats">
-    <div class="stat"><b id="s-total">10</b><span>Shows</span></div>
-    <div class="stat"><b id="s-picks">7</b><span>Top picks</span></div>
+    <div class="stat"><b id="s-total">0</b><span>Shows</span></div>
+    <div class="stat"><b id="s-picks">0</b><span>Top picks</span></div>
     <div class="stat"><b id="s-disc">0</b><span>Discoveries</span></div>
     <div class="stat"><b id="s-going">0</b><span>Going</span></div>
   </div>
@@ -184,294 +244,12 @@ input[type=text]:focus{outline:none;border-color:#d4f23c}
   </div>
 
   <div class="sync-note">Shows from <a href="https://austin.showlists.net/" target="_blank">Showlist Austin</a> · Updated weekly</div>
-
-  <div id="main"><div class="sec-head"><span class="sec-label">Top picks for you</span></div><div class="grid"><div class="card" id="card-0">
-    <div class="card-accent accent-high"></div>
-    <div class="card-body">
-      <div class="card-top">
-        <div class="card-artist">Thievery Corporation</div>
-        <span class="genre-tag g-electronic">Electronic</span>
-      </div>
-      <span class="badge badge-high">★ Top pick</span>
-      <div class="card-venue-row">
-        <span class="card-venue">📍 Emo's</span>
-        <a href="https://www.ticketmaster.com/thievery-corporation-austin-texas-06-17-2026/event/3A006464F04E3007" target="_blank" class="tix-link">Get tix →</a>
-      </div>
-      <div class="card-date">📅 Wed Jun 17 · $30</div>
-      <div class="card-vibe">Sophisticated global electronica — lush, hypnotic, late-night grooves.</div>
-      <div class="card-why">💚 Radiohead's atmospheric depth meets late-night electronic soul.</div>
-      <div class="card-sounds"><b>Sounds like</b> Tash Sultana, Radiohead</div>
-    </div>
-    <div class="card-media">
-      <a href="https://open.spotify.com/artist/6mMM6FHN7LMTVGQyg3FWKL" target="_blank" class="media-link sp">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424a.622.622 0 01-.857.207c-2.348-1.435-5.304-1.76-8.785-.964a.623.623 0 01-.277-1.215c3.809-.87 7.077-.496 9.712 1.115a.623.623 0 01.207.857zm1.223-2.722a.779.779 0 01-1.072.257c-2.687-1.652-6.785-2.131-9.965-1.166a.779.779 0 01-.966-.519.779.779 0 01.519-.966c3.632-1.102 8.147-.568 11.228 1.322a.78.78 0 01.256 1.072zm.105-2.835C14.692 8.95 9.375 8.775 6.297 9.71a.935.935 0 11-.543-1.79c3.532-1.072 9.404-.865 13.115 1.338a.935.935 0 01-.955 1.609z"></path></svg>
-        Spotify</a>
-      <a href="https://www.youtube.com/results?search_query=Thievery%20Corporation%20The%20Richest%20Man%20in%20Babylon%20official" target="_blank" class="media-link yt">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
-        "The Richest Man in Babylon"</a>
-    </div>
-    <div class="card-footer">
-      <button class="cbtn" onclick="toggleGoing(0)">Going</button>
-    </div>
-  </div><div class="card" id="card-1">
-    <div class="card-accent accent-high"></div>
-    <div class="card-body">
-      <div class="card-top">
-        <div class="card-artist">Audrey Hobert</div>
-        <span class="genre-tag g-folk">Folk</span>
-      </div>
-      <span class="badge badge-high">★ Top pick</span>
-      <div class="card-venue-row">
-        <span class="card-venue">📍 ACL Live</span>
-        <a href="https://www.acllive.com/events/" target="_blank" class="tix-link">Get tix →</a>
-      </div>
-      <div class="card-date">📅 Wed Jun 17 · $25</div>
-      <div class="card-vibe">Intimate singer-songwriter with warm, emotionally rich storytelling.</div>
-      <div class="card-why">💚 Right in your Sara Bareilles / Maggie Rogers emotional folk lane.</div>
-      <div class="card-sounds"><b>Sounds like</b> Sara Bareilles, Maggie Rogers</div>
-    </div>
-    <div class="card-media">
-      <a href="https://open.spotify.com/artist/1Cs0zKBU1kc0i8ypK3B9ai" target="_blank" class="media-link sp">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424a.622.622 0 01-.857.207c-2.348-1.435-5.304-1.76-8.785-.964a.623.623 0 01-.277-1.215c3.809-.87 7.077-.496 9.712 1.115a.623.623 0 01.207.857zm1.223-2.722a.779.779 0 01-1.072.257c-2.687-1.652-6.785-2.131-9.965-1.166a.779.779 0 01-.966-.519.779.779 0 01.519-.966c3.632-1.102 8.147-.568 11.228 1.322a.78.78 0 01.256 1.072zm.105-2.835C14.692 8.95 9.375 8.775 6.297 9.71a.935.935 0 11-.543-1.79c3.532-1.072 9.404-.865 13.115 1.338a.935.935 0 01-.955 1.609z"></path></svg>
-        Spotify</a>
-      <a href="https://www.youtube.com/results?search_query=Audrey%20Hobert%20Grow%20official" target="_blank" class="media-link yt">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
-        "Grow"</a>
-    </div>
-    <div class="card-footer">
-      <button class="cbtn" onclick="toggleGoing(1)">Going</button>
-    </div>
-  </div><div class="card" id="card-2">
-    <div class="card-accent accent-high"></div>
-    <div class="card-body">
-      <div class="card-top">
-        <div class="card-artist">Tim Kasher</div>
-        <span class="genre-tag g-indie">Indie</span>
-      </div>
-      <span class="badge badge-high">★ Top pick</span>
-      <div class="card-venue-row">
-        <span class="card-venue">📍 Mohawk</span>
-        <a href="https://mohawkaustin.com/" target="_blank" class="tix-link">Get tix →</a>
-      </div>
-      <div class="card-date">📅 Thu Jun 18 · $18</div>
-      <div class="card-vibe">Emo and indie rock legends — emotionally honest and raw.</div>
-      <div class="card-why">💚 Dashboard Confessional is your #20 artist — this is your scene.</div>
-      <div class="card-sounds"><b>Sounds like</b> Dashboard Confessional, Yellowcard</div>
-    </div>
-    <div class="card-media">
-      <a href="https://open.spotify.com/artist/36d0HRFFT29ttNimFXEWpd" target="_blank" class="media-link sp">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424a.622.622 0 01-.857.207c-2.348-1.435-5.304-1.76-8.785-.964a.623.623 0 01-.277-1.215c3.809-.87 7.077-.496 9.712 1.115a.623.623 0 01.207.857zm1.223-2.722a.779.779 0 01-1.072.257c-2.687-1.652-6.785-2.131-9.965-1.166a.779.779 0 01-.966-.519.779.779 0 01.519-.966c3.632-1.102 8.147-.568 11.228 1.322a.78.78 0 01.256 1.072zm.105-2.835C14.692 8.95 9.375 8.775 6.297 9.71a.935.935 0 11-.543-1.79c3.532-1.072 9.404-.865 13.115 1.338a.935.935 0 01-.955 1.609z"></path></svg>
-        Spotify</a>
-      <a href="https://www.youtube.com/results?search_query=Tim%20Kasher%20Cold%20Love%20official" target="_blank" class="media-link yt">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
-        "Cold Love"</a>
-    </div>
-    <div class="card-footer">
-      <button class="cbtn" onclick="toggleGoing(2)">Going</button>
-    </div>
-  </div><div class="card" id="card-4">
-    <div class="card-accent accent-high"></div>
-    <div class="card-body">
-      <div class="card-top">
-        <div class="card-artist">Khalid</div>
-        <span class="genre-tag g-pop">Pop</span>
-      </div>
-      <span class="badge badge-high">★ Top pick</span>
-      <div class="card-venue-row">
-        <span class="card-venue">📍 Moody Amphitheater</span>
-        <a href="https://www.moodyamphitheater.com/events/khalid" target="_blank" class="tix-link">Get tix →</a>
-      </div>
-      <div class="card-date">📅 Fri Jun 19 · $40</div>
-      <div class="card-vibe">Hazy bedroom pop anthems with youthful emotional depth.</div>
-      <div class="card-why">💚 Chet Faker's nocturnal soul meets Djo's indie-pop sensibility.</div>
-      <div class="card-sounds"><b>Sounds like</b> Chet Faker, Vance Joy, Djo</div>
-    </div>
-    <div class="card-media">
-      <a href="https://open.spotify.com/artist/6rhN86TMkjnQIEnaT7BCcj" target="_blank" class="media-link sp">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424a.622.622 0 01-.857.207c-2.348-1.435-5.304-1.76-8.785-.964a.623.623 0 01-.277-1.215c3.809-.87 7.077-.496 9.712 1.115a.623.623 0 01.207.857zm1.223-2.722a.779.779 0 01-1.072.257c-2.687-1.652-6.785-2.131-9.965-1.166a.779.779 0 01-.966-.519.779.779 0 01.519-.966c3.632-1.102 8.147-.568 11.228 1.322a.78.78 0 01.256 1.072zm.105-2.835C14.692 8.95 9.375 8.775 6.297 9.71a.935.935 0 11-.543-1.79c3.532-1.072 9.404-.865 13.115 1.338a.935.935 0 01-.955 1.609z"></path></svg>
-        Spotify</a>
-      <a href="https://www.youtube.com/results?search_query=Khalid%20Young%20Dumb%20%26%20Broke%20official" target="_blank" class="media-link yt">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
-        "Young Dumb &amp; Broke"</a>
-    </div>
-    <div class="card-footer">
-      <button class="cbtn" onclick="toggleGoing(4)">Going</button>
-    </div>
-  </div><div class="card" id="card-6">
-    <div class="card-accent accent-high"></div>
-    <div class="card-body">
-      <div class="card-top">
-        <div class="card-artist">Parker Millsap</div>
-        <span class="genre-tag g-americana">Americana</span>
-      </div>
-      <span class="badge badge-high">★ Top pick</span>
-      <div class="card-venue-row">
-        <span class="card-venue">📍 Antone's</span>
-        <a href="https://antonesnightclub.com/tm-event/parker-millsap/" target="_blank" class="tix-link">Get tix →</a>
-      </div>
-      <div class="card-date">📅 Sat Jun 20 · $22</div>
-      <div class="card-vibe">Oklahoma storyteller — preacher cadence meets bluesman grit.</div>
-      <div class="card-why">💚 Exactly the heartfelt Americana of Gregory Alan Isakov and Caamp.</div>
-      <div class="card-sounds"><b>Sounds like</b> Gregory Alan Isakov, Caamp, The Lumineers</div>
-    </div>
-    <div class="card-media">
-      <a href="https://open.spotify.com/artist/65sBBMO3y4R3rETgHt7qk2" target="_blank" class="media-link sp">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424a.622.622 0 01-.857.207c-2.348-1.435-5.304-1.76-8.785-.964a.623.623 0 01-.277-1.215c3.809-.87 7.077-.496 9.712 1.115a.623.623 0 01.207.857zm1.223-2.722a.779.779 0 01-1.072.257c-2.687-1.652-6.785-2.131-9.965-1.166a.779.779 0 01-.966-.519.779.779 0 01.519-.966c3.632-1.102 8.147-.568 11.228 1.322a.78.78 0 01.256 1.072zm.105-2.835C14.692 8.95 9.375 8.775 6.297 9.71a.935.935 0 11-.543-1.79c3.532-1.072 9.404-.865 13.115 1.338a.935.935 0 01-.955 1.609z"></path></svg>
-        Spotify</a>
-      <a href="https://www.youtube.com/results?search_query=Parker%20Millsap%20Hands%20of%20Time%20official" target="_blank" class="media-link yt">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
-        "Hands of Time"</a>
-    </div>
-    <div class="card-footer">
-      <button class="cbtn" onclick="toggleGoing(6)">Going</button>
-    </div>
-  </div><div class="card" id="card-7">
-    <div class="card-accent accent-high"></div>
-    <div class="card-body">
-      <div class="card-top">
-        <div class="card-artist">Tyler Ramsey &amp; Carl Broemel</div>
-        <span class="genre-tag g-folk">Folk</span>
-      </div>
-      <span class="badge badge-high">★ Top pick</span>
-      <div class="card-venue-row">
-        <span class="card-venue">📍 The 04 Center</span>
-        <a href="https://www.04center.com/" target="_blank" class="tix-link">Get tix →</a>
-      </div>
-      <div class="card-date">📅 Sat Jun 20 · $25</div>
-      <div class="card-vibe">Tender acoustic folk from two beloved indie veterans.</div>
-      <div class="card-why">💚 If you love Gregory Alan Isakov's hushed folk, this is unmissable.</div>
-      <div class="card-sounds"><b>Sounds like</b> Gregory Alan Isakov, Caamp, Fink</div>
-    </div>
-    <div class="card-media">
-      <a href="https://open.spotify.com/artist/6JAPhxHRBfcRSFWfBLBvSZ" target="_blank" class="media-link sp">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424a.622.622 0 01-.857.207c-2.348-1.435-5.304-1.76-8.785-.964a.623.623 0 01-.277-1.215c3.809-.87 7.077-.496 9.712 1.115a.623.623 0 01.207.857zm1.223-2.722a.779.779 0 01-1.072.257c-2.687-1.652-6.785-2.131-9.965-1.166a.779.779 0 01-.966-.519.779.779 0 01.519-.966c3.632-1.102 8.147-.568 11.228 1.322a.78.78 0 01.256 1.072zm.105-2.835C14.692 8.95 9.375 8.775 6.297 9.71a.935.935 0 11-.543-1.79c3.532-1.072 9.404-.865 13.115 1.338a.935.935 0 01-.955 1.609z"></path></svg>
-        Spotify</a>
-      <a href="https://www.youtube.com/results?search_query=Tyler%20Ramsey%20%26%20Carl%20Broemel%20The%20Valley%20official" target="_blank" class="media-link yt">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
-        "The Valley"</a>
-    </div>
-    <div class="card-footer">
-      <button class="cbtn" onclick="toggleGoing(7)">Going</button>
-    </div>
-  </div><div class="card" id="card-8">
-    <div class="card-accent accent-high"></div>
-    <div class="card-body">
-      <div class="card-top">
-        <div class="card-artist">Kevin Morby</div>
-        <span class="genre-tag g-indie">Indie</span>
-      </div>
-      <span class="badge badge-high">★ Top pick</span>
-      <div class="card-venue-row">
-        <span class="card-venue">📍 Stubb's</span>
-        <a href="https://www.stubbsaustin.com/" target="_blank" class="tix-link">Get tix →</a>
-      </div>
-      <div class="card-date">📅 Sun Jun 21 · $30</div>
-      <div class="card-vibe">Literary indie rock with a wandering, cinematic soul.</div>
-      <div class="card-why">💚 The atmospheric folk-rock heart of your taste, live at Stubb's.</div>
-      <div class="card-sounds"><b>Sounds like</b> The Lumineers, Gregory Alan Isakov, Fink</div>
-    </div>
-    <div class="card-media">
-      <a href="https://open.spotify.com/artist/6mfggWAHuPsFBqy3UoMfBO" target="_blank" class="media-link sp">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424a.622.622 0 01-.857.207c-2.348-1.435-5.304-1.76-8.785-.964a.623.623 0 01-.277-1.215c3.809-.87 7.077-.496 9.712 1.115a.623.623 0 01.207.857zm1.223-2.722a.779.779 0 01-1.072.257c-2.687-1.652-6.785-2.131-9.965-1.166a.779.779 0 01-.966-.519.779.779 0 01.519-.966c3.632-1.102 8.147-.568 11.228 1.322a.78.78 0 01.256 1.072zm.105-2.835C14.692 8.95 9.375 8.775 6.297 9.71a.935.935 0 11-.543-1.79c3.532-1.072 9.404-.865 13.115 1.338a.935.935 0 01-.955 1.609z"></path></svg>
-        Spotify</a>
-      <a href="https://www.youtube.com/results?search_query=Kevin%20Morby%20Beautiful%20Strangers%20official" target="_blank" class="media-link yt">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
-        "Beautiful Strangers"</a>
-    </div>
-    <div class="card-footer">
-      <button class="cbtn" onclick="toggleGoing(8)">Going</button>
-    </div>
-  </div></div><div class="sec-head"><span class="sec-label">You'll probably dig</span></div><div class="grid"><div class="card" id="card-3">
-    <div class="card-accent accent-med"></div>
-    <div class="card-body">
-      <div class="card-top">
-        <div class="card-artist">Summer Walker</div>
-        <span class="genre-tag g-rb">R&amp;B</span>
-      </div>
-      <span class="badge badge-med">↗ You'll dig</span>
-      <div class="card-venue-row">
-        <span class="card-venue">📍 Moody Center</span>
-        <a href="https://moodycenteratx.com/event/summer-walker/" target="_blank" class="tix-link">Get tix →</a>
-      </div>
-      <div class="card-date">📅 Thu Jun 18 · $45</div>
-      <div class="card-vibe">Vulnerable R&amp;B confessionals — raw emotion over lush production.</div>
-      <div class="card-why">💚 Late-night emotional R&amp;B that shares Chet Faker's deep intimacy.</div>
-      <div class="card-sounds"><b>Sounds like</b> Chet Faker, HAIM</div>
-    </div>
-    <div class="card-media">
-      <a href="https://open.spotify.com/artist/7iZtZyCzp3LItcw1wtPI3D" target="_blank" class="media-link sp">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424a.622.622 0 01-.857.207c-2.348-1.435-5.304-1.76-8.785-.964a.623.623 0 01-.277-1.215c3.809-.87 7.077-.496 9.712 1.115a.623.623 0 01.207.857zm1.223-2.722a.779.779 0 01-1.072.257c-2.687-1.652-6.785-2.131-9.965-1.166a.779.779 0 01-.966-.519.779.779 0 01.519-.966c3.632-1.102 8.147-.568 11.228 1.322a.78.78 0 01.256 1.072zm.105-2.835C14.692 8.95 9.375 8.775 6.297 9.71a.935.935 0 11-.543-1.79c3.532-1.072 9.404-.865 13.115 1.338a.935.935 0 01-.955 1.609z"></path></svg>
-        Spotify</a>
-      <a href="https://www.youtube.com/results?search_query=Summer%20Walker%20Leave%20the%20Door%20Open%20official" target="_blank" class="media-link yt">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
-        "Leave the Door Open"</a>
-    </div>
-    <div class="card-footer">
-      <button class="cbtn" onclick="toggleGoing(3)">Going</button>
-    </div>
-  </div><div class="card" id="card-5">
-    <div class="card-accent accent-med"></div>
-    <div class="card-body">
-      <div class="card-top">
-        <div class="card-artist">Kali Uchis</div>
-        <span class="genre-tag g-rb">R&amp;B</span>
-      </div>
-      <span class="badge badge-med">↗ You'll dig</span>
-      <div class="card-venue-row">
-        <span class="card-venue">📍 Germania Amphitheater</span>
-        <a href="http://germaniaamp.com/events/kali-uchis" target="_blank" class="tix-link">Get tix →</a>
-      </div>
-      <div class="card-date">📅 Fri Jun 19 · $45</div>
-      <div class="card-vibe">Dreamy Latin-tinged R&amp;B with a retro-futuristic glow.</div>
-      <div class="card-why">💚 Lush, textured, and soulful — right in your atmospheric lane.</div>
-      <div class="card-sounds"><b>Sounds like</b> Chet Faker, HAIM</div>
-    </div>
-    <div class="card-media">
-      <a href="https://open.spotify.com/artist/1U1el3k54VvEUzo3ybLPlM" target="_blank" class="media-link sp">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424a.622.622 0 01-.857.207c-2.348-1.435-5.304-1.76-8.785-.964a.623.623 0 01-.277-1.215c3.809-.87 7.077-.496 9.712 1.115a.623.623 0 01.207.857zm1.223-2.722a.779.779 0 01-1.072.257c-2.687-1.652-6.785-2.131-9.965-1.166a.779.779 0 01-.966-.519.779.779 0 01.519-.966c3.632-1.102 8.147-.568 11.228 1.322a.78.78 0 01.256 1.072zm.105-2.835C14.692 8.95 9.375 8.775 6.297 9.71a.935.935 0 11-.543-1.79c3.532-1.072 9.404-.865 13.115 1.338a.935.935 0 01-.955 1.609z"></path></svg>
-        Spotify</a>
-      <a href="https://www.youtube.com/results?search_query=Kali%20Uchis%20telepat%C3%ADa%20official" target="_blank" class="media-link yt">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
-        "telepatía"</a>
-    </div>
-    <div class="card-footer">
-      <button class="cbtn" onclick="toggleGoing(5)">Going</button>
-    </div>
-  </div><div class="card" id="card-9">
-    <div class="card-accent accent-med"></div>
-    <div class="card-body">
-      <div class="card-top">
-        <div class="card-artist">5 Seconds of Summer</div>
-        <span class="genre-tag g-pop">Pop</span>
-      </div>
-      <span class="badge badge-med">↗ You'll dig</span>
-      <div class="card-venue-row">
-        <span class="card-venue">📍 Moody Center</span>
-        <a href="https://moodycenteratx.com/event/5sos/" target="_blank" class="tix-link">Get tix →</a>
-      </div>
-      <div class="card-date">📅 Sun Jun 21 · $50</div>
-      <div class="card-vibe">Stadium pop-rock with serious emotional hooks.</div>
-      <div class="card-why">💚 Your pop-punk nostalgia side — Yellowcard and blink-182 energy.</div>
-      <div class="card-sounds"><b>Sounds like</b> Yellowcard, blink-182, Coldplay</div>
-    </div>
-    <div class="card-media">
-      <a href="https://open.spotify.com/artist/5Rl15oVamLq7FbSX0XtQI0" target="_blank" class="media-link sp">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424a.622.622 0 01-.857.207c-2.348-1.435-5.304-1.76-8.785-.964a.623.623 0 01-.277-1.215c3.809-.87 7.077-.496 9.712 1.115a.623.623 0 01.207.857zm1.223-2.722a.779.779 0 01-1.072.257c-2.687-1.652-6.785-2.131-9.965-1.166a.779.779 0 01-.966-.519.779.779 0 01.519-.966c3.632-1.102 8.147-.568 11.228 1.322a.78.78 0 01.256 1.072zm.105-2.835C14.692 8.95 9.375 8.775 6.297 9.71a.935.935 0 11-.543-1.79c3.532-1.072 9.404-.865 13.115 1.338a.935.935 0 01-.955 1.609z"></path></svg>
-        Spotify</a>
-      <a href="https://www.youtube.com/results?search_query=5%20Seconds%20of%20Summer%20Youngblood%20official" target="_blank" class="media-link yt">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
-        "Youngblood"</a>
-    </div>
-    <div class="card-footer">
-      <button class="cbtn" onclick="toggleGoing(9)">Going</button>
-    </div>
-  </div></div></div>
-
+  <div id="main"></div>
 </div>
 
 <div id="disc-tip" class="tooltip-box" style="position:fixed;z-index:200;display:none">
   <div class="tooltip-title">What are Discoveries?</div>
-  <div class="tooltip-body">These shows don't closely match your usual taste — but they're worth knowing about. Different genre, unexpected artist, or an Austin experience you'd never find otherwise. Think of it as your next Chet Faker moment waiting to happen.</div>
+  <div class="tooltip-body">These shows don't closely match your usual taste — but they're worth knowing about. Think of it as your next Chet Faker moment waiting to happen.</div>
   <div class="tooltip-artists" id="disc-tip-artists"></div>
 </div>
 
@@ -481,153 +259,223 @@ input[type=text]:focus{outline:none;border-color:#d4f23c}
 
 <script>
 const SHOWS=[
-  {id:0,artist:"Thievery Corporation",venue:"Emo's",day:"Wed Jun 17",week:"this",genre:"Electronic",price:"$30",vibe:"Sophisticated global electronica — lush, hypnotic, late-night grooves.",soundsLike:"Tash Sultana, Radiohead",why:"Radiohead's atmospheric depth meets late-night electronic soul.",match:"high",ticket:"https://www.ticketmaster.com/thievery-corporation-austin-texas-06-17-2026/event/3A006464F04E3007",spotify:"https://open.spotify.com/artist/6mMM6FHN7LMTVGQyg3FWKL",topSong:"The Richest Man in Babylon"},
-  {id:1,artist:"Audrey Hobert",venue:"ACL Live",day:"Wed Jun 17",week:"this",genre:"Folk",price:"$25",vibe:"Intimate singer-songwriter with warm, emotionally rich storytelling.",soundsLike:"Sara Bareilles, Maggie Rogers",why:"Right in your Sara Bareilles / Maggie Rogers emotional folk lane.",match:"high",ticket:"https://www.acllive.com/events/",spotify:"https://open.spotify.com/artist/1Cs0zKBU1kc0i8ypK3B9ai",topSong:"Grow"},
-  {id:2,artist:"Tim Kasher",venue:"Mohawk",day:"Thu Jun 18",week:"this",genre:"Indie",price:"$18",vibe:"Emo and indie rock legends — emotionally honest and raw.",soundsLike:"Dashboard Confessional, Yellowcard",why:"Dashboard Confessional is your #20 artist — this is your scene.",match:"high",ticket:"https://mohawkaustin.com/",spotify:"https://open.spotify.com/artist/36d0HRFFT29ttNimFXEWpd",topSong:"Cold Love"},
-  {id:3,artist:"Summer Walker",venue:"Moody Center",day:"Thu Jun 18",week:"this",genre:"R&B",price:"$45",vibe:"Vulnerable R&B confessionals — raw emotion over lush production.",soundsLike:"Chet Faker, HAIM",why:"Late-night emotional R&B that shares Chet Faker's deep intimacy.",match:"medium",ticket:"https://moodycenteratx.com/event/summer-walker/",spotify:"https://open.spotify.com/artist/7iZtZyCzp3LItcw1wtPI3D",topSong:"Leave the Door Open"},
-  {id:4,artist:"Khalid",venue:"Moody Amphitheater",day:"Fri Jun 19",week:"this",genre:"Pop",price:"$40",vibe:"Hazy bedroom pop anthems with youthful emotional depth.",soundsLike:"Chet Faker, Vance Joy, Djo",why:"Chet Faker's nocturnal soul meets Djo's indie-pop sensibility.",match:"high",ticket:"https://www.moodyamphitheater.com/events/khalid",spotify:"https://open.spotify.com/artist/6rhN86TMkjnQIEnaT7BCcj",topSong:"Young Dumb & Broke"},
-  {id:5,artist:"Kali Uchis",venue:"Germania Amphitheater",day:"Fri Jun 19",week:"this",genre:"R&B",price:"$45",vibe:"Dreamy Latin-tinged R&B with a retro-futuristic glow.",soundsLike:"Chet Faker, HAIM",why:"Lush, textured, and soulful — right in your atmospheric lane.",match:"medium",ticket:"http://germaniaamp.com/events/kali-uchis",spotify:"https://open.spotify.com/artist/1U1el3k54VvEUzo3ybLPlM",topSong:"telepatía"},
-  {id:6,artist:"Parker Millsap",venue:"Antone's",day:"Sat Jun 20",week:"this",genre:"Americana",price:"$22",vibe:"Oklahoma storyteller — preacher cadence meets bluesman grit.",soundsLike:"Gregory Alan Isakov, Caamp, The Lumineers",why:"Exactly the heartfelt Americana of Gregory Alan Isakov and Caamp.",match:"high",ticket:"https://antonesnightclub.com/tm-event/parker-millsap/",spotify:"https://open.spotify.com/artist/65sBBMO3y4R3rETgHt7qk2",topSong:"Hands of Time"},
-  {id:7,artist:"Tyler Ramsey & Carl Broemel",venue:"The 04 Center",day:"Sat Jun 20",week:"this",genre:"Folk",price:"$25",vibe:"Tender acoustic folk from two beloved indie veterans.",soundsLike:"Gregory Alan Isakov, Caamp, Fink",why:"If you love Gregory Alan Isakov's hushed folk, this is unmissable.",match:"high",ticket:"https://www.04center.com/",spotify:"https://open.spotify.com/artist/6JAPhxHRBfcRSFWfBLBvSZ",topSong:"The Valley"},
-  {id:8,artist:"Kevin Morby",venue:"Stubb's",day:"Sun Jun 21",week:"this",genre:"Indie",price:"$30",vibe:"Literary indie rock with a wandering, cinematic soul.",soundsLike:"The Lumineers, Gregory Alan Isakov, Fink",why:"The atmospheric folk-rock heart of your taste, live at Stubb's.",match:"high",ticket:"https://www.stubbsaustin.com/",spotify:"https://open.spotify.com/artist/6mfggWAHuPsFBqy3UoMfBO",topSong:"Beautiful Strangers"},
-  {id:9,artist:"5 Seconds of Summer",venue:"Moody Center",day:"Sun Jun 21",week:"this",genre:"Pop",price:"$50",vibe:"Stadium pop-rock with serious emotional hooks.",soundsLike:"Yellowcard, blink-182, Coldplay",why:"Your pop-punk nostalgia side — Yellowcard and blink-182 energy.",match:"medium",ticket:"https://moodycenteratx.com/event/5sos/",spotify:"https://open.spotify.com/artist/5Rl15oVamLq7FbSX0XtQI0",topSong:"Youngblood"},
-  {id:10,artist:"Louis Tomlinson",venue:"Moody Center",day:"Mon Jun 22",week:"next",genre:"Pop",price:"$45",vibe:"Stadium indie pop with raw emotional confessionals.",soundsLike:"Coldplay, Vance Joy, Ed Sheeran",why:"Ed Sheeran / Coldplay territory — anthemic and emotionally direct.",match:"medium",ticket:"https://moodycenteratx.com/event/louis-tomlinson/",spotify:"https://open.spotify.com/artist/5xtHNKNzhTwe2tdp1rzbkq",topSong:"Two of Us"},
-  {id:11,artist:"Augustana & Phantom Planet",venue:"Antone's",day:"Tue Jun 23",week:"next",genre:"Indie",price:"$28",vibe:"Emo-era indie anthems — Boston and California nostalgia.",soundsLike:"Dashboard Confessional, Snow Patrol, Coldplay",why:"Snow Patrol and Dashboard Confessional energy — your pop-punk nostalgia.",match:"high",ticket:"https://antonesnightclub.com/",spotify:"https://open.spotify.com/artist/4cTFiT7y4nlLs8MpNT7ybN",topSong:"Boston"},
-  {id:12,artist:"Ariana Grande",venue:"Moody Center",day:"Wed Jun 24",week:"next",genre:"Pop",price:"$75",vibe:"Powerhouse pop — technically flawless and emotionally grand.",soundsLike:"Taylor Swift, Sara Bareilles",why:"Taylor Swift and Sara Bareilles fan? Ariana at her peak is unmissable.",match:"medium",ticket:"https://moodycenteratx.com/event/ariana-grande/",spotify:"https://open.spotify.com/artist/66CXWjxzNUsdJxJ2JdwvnR",topSong:"thank u, next"},
-  {id:13,artist:"NPR Tiny Desk on the Road",venue:"Emo's",day:"Wed Jun 24",week:"next",genre:"Indie",price:"$20",vibe:"Emerging artists curated by NPR — intimate and surprising.",soundsLike:"Maggie Rogers, Gregory Alan Isakov",why:"The perfect place to find your next Chet Faker — NPR curated.",match:"discover",ticket:"https://www.emosaustin.com/",spotify:null,topSong:"Various artists"},
-  {id:14,artist:"Bob Dylan",venue:"Moody Amphitheater",day:"Mon Jun 29",week:"next",genre:"Folk",price:"$65",vibe:"A living legend — rough and timeless American songwriting.",soundsLike:"Gregory Alan Isakov, The Lumineers, Caamp",why:"The spiritual grandfather of your entire folk-Americana taste.",match:"discover",ticket:"https://www.moodyamphitheater.com/events/bob-dylan",spotify:"https://open.spotify.com/artist/74ASZWbe4lXaubB36ztrGX",topSong:"Like a Rolling Stone"},
-  {id:15,artist:"Young the Giant",venue:"Moody Amphitheater",day:"Fri Jul 10",week:"month",genre:"Indie",price:"$35",vibe:"Anthemic indie-rock with sweeping hooks and real depth.",soundsLike:"Young the Giant, Cage The Elephant, Bleachers",why:"Young the Giant is in your top artists — get tickets now.",match:"high",ticket:"https://www.moodyamphitheater.com/events/young-the-giant",spotify:"https://open.spotify.com/artist/4j56EQDQu5XnL7R3E9xt2l",topSong:"My Body"},
-  {id:16,artist:"Tori Amos with Bartees Strange",venue:"ACL Live",day:"Tue Jul 14",week:"month",genre:"Alternative",price:"$55",vibe:"Piano-driven alt-rock poetry — raw, feminist, and fearless.",soundsLike:"Sara Bareilles, Fink, Radiohead",why:"Sara Bareilles owes her entire career to Tori Amos. See the original.",match:"high",ticket:"https://www.acllive.com/",spotify:"https://open.spotify.com/artist/1HBkTponIBBWNV6gS7Jfwe",topSong:"Cornflake Girl"},
-  {id:17,artist:"JOJI",venue:"Moody Center",day:"Sun Jul 6",week:"month",genre:"R&B",price:"$40",vibe:"Melancholy bedroom pop meets Japanese-American soul.",soundsLike:"Chet Faker, Djo, Mk.gee",why:"Same atmospheric melancholy as Chet Faker's best tracks.",match:"high",ticket:"https://moodycenteratx.com/event/joji-2026/",spotify:"https://open.spotify.com/artist/6M2wZ9GZgrQXHCFfjv46we",topSong:"Glimpse of Us"},
-  {id:18,artist:"Daniel Caesar",venue:"Moody Center",day:"Sun Jul 19",week:"month",genre:"R&B",price:"$45",vibe:"Neo-soul confessionals — voice like silk, production like warmth.",soundsLike:"Chet Faker, Mk.gee, Francis and the Lights",why:"If Chet Faker is your #1, Daniel Caesar is your next obsession.",match:"high",ticket:"https://moodycenteratx.com/event/daniel-caesar/",spotify:"https://open.spotify.com/artist/20JZFwl6HVl6yg8a4H3ZqK",topSong:"Best Part"},
-  {id:19,artist:"Kurt Vile & The Violators",venue:"ACL Live",day:"Mon Jul 13",week:"month",genre:"Indie",price:"$35",vibe:"Laid-back psychedelic rock — hazy, meandering, deeply satisfying.",soundsLike:"Radiohead, Fink, Mk.gee",why:"Mk.gee and Radiohead's hazy guitar world taken somewhere new.",match:"medium",ticket:"https://www.acllive.com/",spotify:"https://open.spotify.com/artist/6kHM9FBdYqLq0sCQDNy3Dy",topSong:"Pretty Pimpin"},
+  // ── THIS WEEK ──
+  {id:0,artist:"Thievery Corporation",venue:"Emo's",day:"Wed Jun 17",week:"this",genre:"Electronic",price:"$30",vibe:"Sophisticated global electronica — lush, hypnotic, late-night grooves.",soundsLike:"Tash Sultana, Radiohead",why:"Radiohead's atmospheric depth meets late-night electronic soul.",match:"high",moods:["feel-good","passing-on"],ticket:"https://www.ticketmaster.com/thievery-corporation-austin-texas-06-17-2026/event/3A006464F04E3007",spotify:"https://open.spotify.com/artist/6mMM6FHN7LMTVGQyg3FWKL",topSong:"The Richest Man in Babylon"},
+  {id:1,artist:"Audrey Hobert",venue:"ACL Live",day:"Wed Jun 17",week:"this",genre:"Folk",price:"$25",vibe:"Intimate singer-songwriter with warm, emotionally rich storytelling.",soundsLike:"Sara Bareilles, Maggie Rogers",why:"Right in your Sara Bareilles / Maggie Rogers emotional folk lane.",match:"high",moods:["appreciative"],ticket:"https://www.acllive.com/events/",spotify:"https://open.spotify.com/artist/1Cs0zKBU1kc0i8ypK3B9ai",topSong:"Grow"},
+  {id:2,artist:"Tim Kasher",venue:"Mohawk",day:"Thu Jun 18",week:"this",genre:"Indie",price:"$18",vibe:"Emo and indie rock legends — emotionally honest and raw.",soundsLike:"Dashboard Confessional, Yellowcard",why:"Dashboard Confessional is your #20 artist — this is your scene.",match:"high",moods:["appreciative"],ticket:"https://mohawkaustin.com/",spotify:"https://open.spotify.com/artist/36d0HRFFT29ttNimFXEWpd",topSong:"Cold Love"},
+  {id:3,artist:"Summer Walker",venue:"Moody Center",day:"Thu Jun 18",week:"this",genre:"R&B",price:"$45",vibe:"Vulnerable R&B confessionals — raw emotion over lush production.",soundsLike:"Chet Faker, HAIM",why:"Late-night emotional R&B that shares Chet Faker's deep intimacy.",match:"medium",moods:["passing-on","appreciative"],ticket:"https://moodycenteratx.com/event/summer-walker/",spotify:"https://open.spotify.com/artist/7iZtZyCzp3LItcw1wtPI3D",topSong:"Leave the Door Open"},
+  {id:4,artist:"Khalid",venue:"Moody Amphitheater",day:"Fri Jun 19",week:"this",genre:"Pop",price:"$40",vibe:"Hazy bedroom pop anthems with youthful emotional depth.",soundsLike:"Chet Faker, Vance Joy, Djo",why:"Chet Faker's nocturnal soul meets Djo's indie-pop sensibility.",match:"high",moods:["feel-good"],ticket:"https://www.moodyamphitheater.com/events/khalid",spotify:"https://open.spotify.com/artist/6rhN86TMkjnQIEnaT7BCcj",topSong:"Young Dumb & Broke"},
+  {id:5,artist:"Kali Uchis",venue:"Germania Amphitheater",day:"Fri Jun 19",week:"this",genre:"R&B",price:"$45",vibe:"Dreamy Latin-tinged R&B with a retro-futuristic glow.",soundsLike:"Chet Faker, HAIM",why:"Lush, textured, and soulful — right in your atmospheric lane.",match:"medium",moods:["feel-good","passing-on"],ticket:"http://germaniaamp.com/events/kali-uchis",spotify:"https://open.spotify.com/artist/1U1el3k54VvEUzo3ybLPlM",topSong:"telepatía"},
+  {id:6,artist:"Parker Millsap",venue:"Antone's",day:"Sat Jun 20",week:"this",genre:"Americana",price:"$22",vibe:"Oklahoma storyteller — preacher cadence meets bluesman grit.",soundsLike:"Gregory Alan Isakov, Caamp, The Lumineers",why:"Exactly the heartfelt Americana of Gregory Alan Isakov and Caamp.",match:"high",moods:["appreciative"],ticket:"https://antonesnightclub.com/tm-event/parker-millsap/",spotify:"https://open.spotify.com/artist/65sBBMO3y4R3rETgHt7qk2",topSong:"Hands of Time"},
+  {id:7,artist:"Tyler Ramsey & Carl Broemel",venue:"The 04 Center",day:"Sat Jun 20",week:"this",genre:"Folk",price:"$25",vibe:"Tender acoustic folk from two beloved indie veterans.",soundsLike:"Gregory Alan Isakov, Caamp, Fink",why:"If you love Gregory Alan Isakov's hushed folk, this is unmissable.",match:"high",moods:["appreciative"],ticket:"https://www.04center.com/",spotify:"https://open.spotify.com/artist/6JAPhxHRBfcRSFWfBLBvSZ",topSong:"The Valley"},
+  {id:8,artist:"Kevin Morby",venue:"Stubb's",day:"Sun Jun 21",week:"this",genre:"Indie",price:"$30",vibe:"Literary indie rock with a wandering, cinematic soul.",soundsLike:"The Lumineers, Gregory Alan Isakov, Fink",why:"The atmospheric folk-rock heart of your taste, live at Stubb's.",match:"high",moods:["appreciative"],ticket:"https://www.stubbsaustin.com/",spotify:"https://open.spotify.com/artist/6mfggWAHuPsFBqy3UoMfBO",topSong:"Beautiful Strangers"},
+  {id:9,artist:"5 Seconds of Summer",venue:"Moody Center",day:"Sun Jun 21",week:"this",genre:"Pop",price:"$50",vibe:"Stadium pop-rock with serious emotional hooks.",soundsLike:"Yellowcard, blink-182, Coldplay",why:"Your pop-punk nostalgia side — Yellowcard and blink-182 energy.",match:"medium",moods:["feel-good"],ticket:"https://moodycenteratx.com/event/5sos/",spotify:"https://open.spotify.com/artist/5Rl15oVamLq7FbSX0XtQI0",topSong:"Youngblood"},
+  // This week — in town (not personalised)
+  {id:20,artist:"RX Bandits w/ Maps & Atlases",venue:"Mohawk Outdoors",day:"Mon Jun 15",week:"this",genre:"Rock",price:"",vibe:"",soundsLike:"",why:"",match:"none",moods:["feel-good","passing-on"],ticket:"https://mohawkaustin.com/",spotify:null,topSong:""},
+  {id:21,artist:"A$AP Rocky",venue:"Moody Center",day:"Fri Jun 19",week:"this",genre:"Hip-Hop",price:"",vibe:"",soundsLike:"",why:"",match:"none",moods:["feel-good"],ticket:"https://moodycenteratx.com/",spotify:"https://open.spotify.com/artist/13ubrt8QOOCPljQ2FL1Kca",topSong:"Praise The Lord"},
+  {id:22,artist:"Gordo w/ Wakyin",venue:"Concourse Project",day:"Fri Jun 19",week:"this",genre:"Electronic",price:"",vibe:"",soundsLike:"",why:"",match:"none",moods:["feel-good","passing-on"],ticket:"https://www.concourseproject.com/",spotify:null,topSong:""},
+  {id:23,artist:"Big Bill, J'Cuzzi & Haha Laughing w/ KindKeith",venue:"Mohawk Outdoors",day:"Fri Jun 19",week:"this",genre:"Hip-Hop",price:"",vibe:"",soundsLike:"",why:"",match:"none",moods:["feel-good"],ticket:"https://mohawkaustin.com/",spotify:null,topSong:""},
+  {id:24,artist:"Nate Bargatze",venue:"Moody Center",day:"Sat Jun 20",week:"this",genre:"Comedy",price:"",vibe:"",soundsLike:"",why:"",match:"none",moods:["feel-good"],ticket:"https://moodycenteratx.com/",spotify:null,topSong:""},
+  {id:25,artist:"Ayybo",venue:"Concourse Project",day:"Sat Jun 20",week:"this",genre:"Electronic",price:"",vibe:"",soundsLike:"",why:"",match:"none",moods:["feel-good","passing-on"],ticket:"https://www.concourseproject.com/",spotify:null,topSong:""},
+  {id:26,artist:"Grand - Master Gala",venue:"Paramount Theatre",day:"Sat Jun 20",week:"this",genre:"Various",price:"",vibe:"",soundsLike:"",why:"",match:"none",moods:["feel-good","appreciative"],ticket:"https://austintheatre.org/",spotify:null,topSong:""},
+  // ── NEXT WEEK ──
+  {id:10,artist:"Louis Tomlinson",venue:"Moody Center",day:"Mon Jun 22",week:"next",genre:"Pop",price:"$45",vibe:"Stadium indie pop with raw emotional confessionals.",soundsLike:"Coldplay, Vance Joy, Ed Sheeran",why:"Ed Sheeran / Coldplay territory — anthemic and emotionally direct.",match:"medium",moods:["feel-good","appreciative"],ticket:"https://moodycenteratx.com/event/louis-tomlinson/",spotify:"https://open.spotify.com/artist/5xtHNKNzhTwe2tdp1rzbkq",topSong:"Two of Us"},
+  {id:11,artist:"Augustana & Phantom Planet",venue:"Antone's",day:"Tue Jun 23",week:"next",genre:"Indie",price:"$28",vibe:"Emo-era indie anthems — Boston and California nostalgia.",soundsLike:"Dashboard Confessional, Snow Patrol, Coldplay",why:"Snow Patrol and Dashboard Confessional energy — your pop-punk nostalgia.",match:"high",moods:["appreciative"],ticket:"https://antonesnightclub.com/",spotify:"https://open.spotify.com/artist/4cTFiT7y4nlLs8MpNT7ybN",topSong:"Boston"},
+  {id:12,artist:"Ariana Grande",venue:"Moody Center",day:"Wed Jun 24",week:"next",genre:"Pop",price:"$75",vibe:"Powerhouse pop — technically flawless and emotionally grand.",soundsLike:"Taylor Swift, Sara Bareilles",why:"Taylor Swift and Sara Bareilles fan? Ariana at her peak is unmissable.",match:"medium",moods:["feel-good"],ticket:"https://moodycenteratx.com/event/ariana-grande/",spotify:"https://open.spotify.com/artist/66CXWjxzNUsdJxJ2JdwvnR",topSong:"thank u, next"},
+  {id:13,artist:"NPR Tiny Desk on the Road",venue:"Emo's",day:"Wed Jun 24",week:"next",genre:"Indie",price:"$20",vibe:"Emerging artists curated by NPR — intimate and surprising.",soundsLike:"Maggie Rogers, Gregory Alan Isakov",why:"The perfect place to find your next Chet Faker — NPR curated.",match:"discover",moods:["appreciative"],ticket:"https://www.emosaustin.com/",spotify:null,topSong:"Various artists"},
+  {id:14,artist:"Bob Dylan",venue:"Moody Amphitheater",day:"Mon Jun 29",week:"next",genre:"Folk",price:"$65",vibe:"A living legend — rough and timeless American songwriting.",soundsLike:"Gregory Alan Isakov, The Lumineers, Caamp",why:"The spiritual grandfather of your entire folk-Americana taste.",match:"discover",moods:["passing-on","appreciative"],ticket:"https://www.moodyamphitheater.com/events/bob-dylan",spotify:"https://open.spotify.com/artist/74ASZWbe4lXaubB36ztrGX",topSong:"Like a Rolling Stone"},
+  // ── NEXT 30 DAYS ──
+  {id:15,artist:"Young the Giant",venue:"Moody Amphitheater",day:"Fri Jul 10",week:"month",genre:"Indie",price:"$35",vibe:"Anthemic indie-rock with sweeping hooks and real depth.",soundsLike:"Young the Giant, Cage The Elephant, Bleachers",why:"Young the Giant is in your top artists — get tickets now.",match:"high",moods:["feel-good"],ticket:"https://www.moodyamphitheater.com/events/young-the-giant",spotify:"https://open.spotify.com/artist/4j56EQDQu5XnL7R3E9xt2l",topSong:"My Body"},
+  {id:16,artist:"Tori Amos with Bartees Strange",venue:"ACL Live",day:"Tue Jul 14",week:"month",genre:"Alternative",price:"$55",vibe:"Piano-driven alt-rock poetry — raw, feminist, and fearless.",soundsLike:"Sara Bareilles, Fink, Radiohead",why:"Sara Bareilles owes her entire career to Tori Amos. See the original.",match:"high",moods:["appreciative"],ticket:"https://www.acllive.com/",spotify:"https://open.spotify.com/artist/1HBkTponIBBWNV6gS7Jfwe",topSong:"Cornflake Girl"},
+  {id:17,artist:"JOJI",venue:"Moody Center",day:"Sun Jul 6",week:"month",genre:"R&B",price:"$40",vibe:"Melancholy bedroom pop meets Japanese-American soul.",soundsLike:"Chet Faker, Djo, Mk.gee",why:"Same atmospheric melancholy as Chet Faker's best tracks.",match:"high",moods:["passing-on","appreciative"],ticket:"https://moodycenteratx.com/event/joji-2026/",spotify:"https://open.spotify.com/artist/6M2wZ9GZgrQXHCFfjv46we",topSong:"Glimpse of Us"},
+  {id:18,artist:"Daniel Caesar",venue:"Moody Center",day:"Sun Jul 19",week:"month",genre:"R&B",price:"$45",vibe:"Neo-soul confessionals — voice like silk, production like warmth.",soundsLike:"Chet Faker, Mk.gee, Francis and the Lights",why:"If Chet Faker is your #1, Daniel Caesar is your next obsession.",match:"high",moods:["appreciative","passing-on"],ticket:"https://moodycenteratx.com/event/daniel-caesar/",spotify:"https://open.spotify.com/artist/20JZFwl6HVl6yg8a4H3ZqK",topSong:"Best Part"},
+  {id:19,artist:"Kurt Vile & The Violators",venue:"ACL Live",day:"Mon Jul 13",week:"month",genre:"Indie",price:"$35",vibe:"Laid-back psychedelic rock — hazy, meandering, deeply satisfying.",soundsLike:"Radiohead, Fink, Mk.gee",why:"Mk.gee and Radiohead's hazy guitar world taken somewhere new.",match:"medium",moods:["passing-on"],ticket:"https://www.acllive.com/",spotify:"https://open.spotify.com/artist/6kHM9FBdYqLq0sCQDNy3Dy",topSong:"Pretty Pimpin"},
 ];
 
 const GENRE_CLASS={
   'Electronic':'g-electronic','Folk':'g-folk','Indie':'g-indie','R&B':'g-rb',
   'Pop':'g-pop','Americana':'g-americana','Alternative':'g-alternative',
   'Rock':'g-rock','Country':'g-country','Jazz':'g-jazz','Blues':'g-blues',
-  'Punk':'g-punk','Soul':'g-soul','Hip-Hop':'g-hiphop','Metal':'g-metal','Latin':'g-rb'
+  'Punk':'g-punk','Soul':'g-soul','Hip-Hop':'g-hiphop','Metal':'g-metal',
+  'Latin':'g-rb','Comedy':'g-comedy','Various':'g-various'
 };
+const MOOD_LABELS={'feel-good':'🎉 Feel Good','passing-on':'🌊 Passing On','appreciative':'🌿 Appreciative'};
+const MOOD_CLS={'feel-good':'mt-feelgood','passing-on':'mt-passingon','appreciative':'mt-appreciative'};
 
-let activeWeek='this',dayFilter='all';
+let activeWeek='this',dayFilter='all',vibeFilter=null,viewMode='cards';
 let saved={},skipped={};
 try{saved=JSON.parse(localStorage.getItem('atx_saved')||'{}');}catch(e){}
 try{skipped=JSON.parse(localStorage.getItem('atx_skipped')||'{}');}catch(e){}
 
-function getVisible(){
+function matchWeek(s){
+  if(activeWeek==='this') return s.week==='this';
+  if(activeWeek==='next') return s.week!=='month';
+  return true;
+}
+function matchDay(s){return dayFilter==='all'||s.day===dayFilter;}
+function matchQ(s){
   const q=(document.getElementById('search')||{}).value||'';
+  return !q||(s.artist+s.venue+s.genre+s.day).toLowerCase().includes(q.toLowerCase());
+}
+function matchVibe(s){return !vibeFilter||s.moods.includes(vibeFilter);}
+
+function getVisible(includeNone){
   return SHOWS.filter(s=>{
-    if(activeWeek==='this'&&s.week!=='this')return false;
-    if(activeWeek==='next'&&s.week==='month')return false;
-    if(dayFilter!=='all'&&s.day!==dayFilter)return false;
-    if(q&&!(s.artist+s.venue+s.genre+s.day).toLowerCase().includes(q.toLowerCase()))return false;
-    return true;
+    if(!includeNone&&s.match==='none') return false;
+    return matchWeek(s)&&matchDay(s)&&matchQ(s)&&matchVibe(s);
   });
+}
+function getInTown(){
+  return SHOWS.filter(s=>s.match==='none'&&matchWeek(s)&&matchDay(s)&&matchQ(s));
 }
 
 function buildDayPills(){
-  const src=SHOWS.filter(s=>activeWeek==='this'?s.week==='this':activeWeek==='next'?s.week!=='month':true);
+  const src=SHOWS.filter(matchWeek);
   const days=['all',...new Set(src.map(s=>s.day))];
-  document.getElementById('day-pills').innerHTML=days.map(d=>`<button class="pill${d===dayFilter?' on':''}" onclick="setDay('${d}',this)">${d==='all'?'All dates':d}</button>`).join('');
+  document.getElementById('day-pills').innerHTML=days.map(d=>
+    `<button class="pill${d===dayFilter?' on':''}" onclick="setDay('${d}',this)">${d==='all'?'All dates':d}</button>`
+  ).join('');
 }
 
 function setWeek(w,btn){
   activeWeek=w;dayFilter='all';
   document.querySelectorAll('[data-week]').forEach(b=>b.classList.remove('on'));
-  btn.classList.add('on');
-  buildDayPills();render();
+  btn.classList.add('on');buildDayPills();render();
 }
 function setDay(d,btn){
   dayFilter=d;
   document.querySelectorAll('#day-pills .pill').forEach(b=>b.classList.remove('on'));
   btn.classList.add('on');render();
 }
+function setVibe(v,btn){
+  vibeFilter=(vibeFilter===v)?null:v;
+  document.querySelectorAll('.vibe-pill').forEach(b=>b.classList.remove('on'));
+  if(vibeFilter)btn.classList.add('on');
+  render();
+}
+function setView(v){
+  viewMode=v;
+  document.getElementById('btn-cards').classList.toggle('on',v==='cards');
+  document.getElementById('btn-schedule').classList.toggle('on',v==='schedule');
+  render();
+}
+
+const SP_SVG=`<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424a.622.622 0 01-.857.207c-2.348-1.435-5.304-1.76-8.785-.964a.623.623 0 01-.277-1.215c3.809-.87 7.077-.496 9.712 1.115a.623.623 0 01.207.857zm1.223-2.722a.779.779 0 01-1.072.257c-2.687-1.652-6.785-2.131-9.965-1.166a.779.779 0 01-.966-.519.779.779 0 01.519-.966c3.632-1.102 8.147-.568 11.228 1.322a.78.78 0 01.256 1.072zm.105-2.835C14.692 8.95 9.375 8.775 6.297 9.71a.935.935 0 11-.543-1.79c3.532-1.072 9.404-.865 13.115 1.338a.935.935 0 01-.955 1.609z"/></svg>`;
+const YT_SVG=`<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>`;
+
+function moodTagsHTML(s){
+  if(!s.moods||!s.moods.length)return '';
+  return `<div class="mood-tags">${s.moods.map(m=>`<span class="mood-tag ${MOOD_CLS[m]}">${MOOD_LABELS[m]}</span>`).join('')}</div>`;
+}
 
 function cardHTML(s){
   const isGoing=saved[s.id],isSkip=skipped[s.id];
   const accentClass=s.match==='high'?'accent-high':s.match==='medium'?'accent-med':'accent-disc';
-  const badge=s.match==='high'
-    ?'<span class="badge badge-high">★ Top pick</span>'
-    :s.match==='medium'
-    ?'<span class="badge badge-med">↗ You\'ll dig</span>'
-    :'<span class="badge badge-disc">✦ Discovery</span>';
+  const badge=s.match==='high'?'<span class="badge badge-high">★ Top pick</span>':s.match==='medium'?'<span class="badge badge-med">↗ You\'ll dig</span>':'<span class="badge badge-disc">✦ Discovery</span>';
   const gc=GENRE_CLASS[s.genre]||'g-indie';
-  const ytQuery=encodeURIComponent(s.artist+' '+(s.topSong||'')+ ' official');
-  const ytUrl=`https://www.youtube.com/results?search_query=${ytQuery}`;
+  const ytUrl=`https://www.youtube.com/results?search_query=${encodeURIComponent(s.artist+' '+(s.topSong||'')+' official')}`;
   return `<div class="card${isGoing?' going':isSkip?' skipped':''}" id="card-${s.id}">
     <div class="card-accent ${accentClass}"></div>
     <div class="card-body">
-      <div class="card-top">
-        <div class="card-artist">${s.artist}</div>
-        <span class="genre-tag ${gc}">${s.genre}</span>
-      </div>
+      <div class="card-top"><div class="card-artist">${s.artist}</div><span class="genre-tag ${gc}">${s.genre}</span></div>
       ${badge}
-      <div class="card-venue-row">
-        <span class="card-venue">📍 ${s.venue}</span>
-        <a href="${s.ticket}" target="_blank" class="tix-link">Get tix →</a>
-      </div>
-      <div class="card-date">📅 ${s.day} · ${s.price}</div>
-      <div class="card-vibe">${s.vibe}</div>
+      <div class="card-venue-row"><span class="card-venue">📍 ${s.venue}</span><a href="${s.ticket}" target="_blank" class="tix-link">Get tix →</a></div>
+      <div class="card-date">📅 ${s.day}${s.price?' · '+s.price:''}</div>
+      ${s.vibe?`<div class="card-vibe">${s.vibe}</div>`:''}
       ${s.why?`<div class="card-why">💚 ${s.why}</div>`:''}
       ${s.soundsLike?`<div class="card-sounds"><b>Sounds like</b> ${s.soundsLike}</div>`:''}
+      ${moodTagsHTML(s)}
     </div>
-    <div class="card-media">
-      ${s.spotify?`<a href="${s.spotify}" target="_blank" class="media-link sp">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424a.622.622 0 01-.857.207c-2.348-1.435-5.304-1.76-8.785-.964a.623.623 0 01-.277-1.215c3.809-.87 7.077-.496 9.712 1.115a.623.623 0 01.207.857zm1.223-2.722a.779.779 0 01-1.072.257c-2.687-1.652-6.785-2.131-9.965-1.166a.779.779 0 01-.966-.519.779.779 0 01.519-.966c3.632-1.102 8.147-.568 11.228 1.322a.78.78 0 01.256 1.072zm.105-2.835C14.692 8.95 9.375 8.775 6.297 9.71a.935.935 0 11-.543-1.79c3.532-1.072 9.404-.865 13.115 1.338a.935.935 0 01-.955 1.609z"/></svg>
-        Spotify</a>`:''}
-      <a href="${ytUrl}" target="_blank" class="media-link yt">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-        ${s.topSong?`"${s.topSong}"`:'Top song'}</a>
+    ${(s.spotify||s.topSong)?`<div class="card-media">
+      ${s.spotify?`<a href="${s.spotify}" target="_blank" class="media-link sp">${SP_SVG} Spotify</a>`:''}
+      ${s.topSong?`<a href="${ytUrl}" target="_blank" class="media-link yt">${YT_SVG} "${s.topSong}"</a>`:''}
+    </div>`:''}
+    <div class="card-footer"><button class="cbtn${isGoing?' going':''}" onclick="toggleGoing(${s.id})">${isGoing?'✓ Going':'Going'}</button></div>
+  </div>`;
+}
+
+function inTownCardHTML(s){
+  const dim=vibeFilter&&!s.moods.includes(vibeFilter);
+  return `<div class="in-town-card${dim?' itc-dim':''}">
+    <div class="itc-left">
+      <div class="itc-artist">${s.artist}</div>
+      <div class="itc-meta">📍 ${s.venue} &nbsp;·&nbsp; 📅 ${s.day}</div>
+      ${moodTagsHTML(s)}
     </div>
-    <div class="card-footer">
-      <button class="cbtn${isGoing?' going':''}" onclick="toggleGoing(${s.id})">${isGoing?'✓ Going':'Going'}</button>
-    </div>
+    <div class="itc-right"><a href="${s.ticket}" target="_blank" class="itc-link">Tickets →</a></div>
+  </div>`;
+}
+
+function scheduleGridHTML(){
+  const src=SHOWS.filter(s=>matchWeek(s)&&matchDay(s)&&matchQ(s));
+  if(!src.length) return '<div class="empty">No shows match.</div>';
+  const days=[...new Set(src.map(s=>s.day))];
+  const venues=[...new Set(src.map(s=>s.venue))].sort();
+  const lookup={};
+  src.forEach(s=>{(lookup[s.day]=lookup[s.day]||{})[s.venue]=(lookup[s.day][s.venue]||[]).concat(s);});
+  const thCols=venues.map(v=>`<th>${v}</th>`).join('');
+  const rows=days.map(day=>{
+    const cells=venues.map(v=>{
+      const shows=(lookup[day]&&lookup[day][v])||[];
+      if(!shows.length) return '<td></td>';
+      return `<td>${shows.map(s=>{
+        const cls=s.match==='high'?'s-high':s.match==='medium'?'s-medium':'s-none';
+        const dim=vibeFilter&&!s.moods.includes(vibeFilter)?' vibe-dim':'';
+        return `<a href="${s.ticket}" target="_blank" class="sch-show ${cls}${dim}">${s.artist}</a>`;
+      }).join('')}</td>`;
+    }).join('');
+    return `<tr><td class="day-col">${day}</td>${cells}</tr>`;
+  }).join('');
+  return `<div class="schedule-wrap"><table class="schedule-table"><thead><tr><th></th>${thCols}</tr></thead><tbody>${rows}</tbody></table></div>
+  <div class="sched-legend">
+    <span class="sleg"><span class="sleg-dot" style="background:#1c2a00;border:1px solid #4a7a00"></span>Top pick</span>
+    <span class="sleg"><span class="sleg-dot" style="background:#001830;border:1px solid #1a4a7a"></span>You'll dig</span>
+    <span class="sleg"><span class="sleg-dot" style="background:#222;border:1px solid #2e2e2e"></span>In town</span>
   </div>`;
 }
 
 function render(){
-  const f=getVisible();
-  const top=f.filter(s=>s.match==='high');
-  const med=f.filter(s=>s.match==='medium');
-  const disc=f.filter(s=>s.match==='discover');
-  document.getElementById('s-total').textContent=f.length;
+  const rec=getVisible(false);
+  const inTown=getInTown();
+  const top=rec.filter(s=>s.match==='high');
+  const med=rec.filter(s=>s.match==='medium');
+  const disc=rec.filter(s=>s.match==='discover');
+  const allCount=SHOWS.filter(s=>matchWeek(s)&&matchDay(s)&&matchQ(s)).length;
+
+  document.getElementById('s-total').textContent=allCount;
   document.getElementById('s-picks').textContent=top.length;
   document.getElementById('s-disc').textContent=disc.length;
   document.getElementById('s-going').textContent=Object.values(saved).filter(Boolean).length;
+
   let html='';
-  if(top.length)html+=`<div class="sec-head"><span class="sec-label">Top picks for you</span></div><div class="grid">${top.map(cardHTML).join('')}</div>`;
-  if(med.length)html+=`<div class="sec-head"><span class="sec-label">You'll probably dig</span></div><div class="grid">${med.map(cardHTML).join('')}</div>`;
-  if(disc.length){
-    const discNames=disc.map(s=>`<div class="tooltip-artist">✦ ${s.artist}</div>`).join('');
-    html+=`<div class="sec-head">
-      <span class="sec-label">Discoveries</span>
-      <span class="tooltip-icon" onclick="showTooltip(event,'${disc.map(s=>s.artist.replace(/'/g,'\\x27')).join('|')}')">?</span>
-    </div><div class="grid">${disc.map(cardHTML).join('')}</div>`;
+  if(viewMode==='schedule'){
+    html=scheduleGridHTML();
+  } else {
+    if(top.length) html+=`<div class="sec-head"><span class="sec-label">Top picks for you</span></div><div class="grid">${top.map(cardHTML).join('')}</div>`;
+    if(med.length) html+=`<div class="sec-head"><span class="sec-label">You'll probably dig</span></div><div class="grid">${med.map(cardHTML).join('')}</div>`;
+    if(disc.length){
+      html+=`<div class="sec-head"><span class="sec-label">Discoveries</span><span class="tooltip-icon" onclick="showTooltip(event,'${disc.map(s=>s.artist.replace(/'/g,"\\x27")).join('|')}')">?</span></div><div class="grid">${disc.map(cardHTML).join('')}</div>`;
+    }
+    if(inTown.length){
+      // sort: vibe match first, then dimmed
+      const sorted=vibeFilter?[...inTown.filter(s=>s.moods.includes(vibeFilter)),...inTown.filter(s=>!s.moods.includes(vibeFilter))]:inTown;
+      html+=`<div class="sec-head"><span class="sec-label">Also in town</span></div><div class="in-town-list">${sorted.map(inTownCardHTML).join('')}</div>`;
+    }
+    if(!rec.length&&!inTown.length) html='<div class="empty">No shows match your filters.</div>';
   }
-  if(!f.length)html='<div class="empty">No shows match your filters.</div>';
   document.getElementById('main').innerHTML=html;
   renderGoing();
 }
 
 function toggleGoing(id){
   saved[id]=!saved[id];
-  if(saved[id])skipped[id]=false;
+  if(saved[id]) skipped[id]=false;
   try{localStorage.setItem('atx_saved',JSON.stringify(saved));}catch(e){}
-  render();
-}
-function toggleSkip(id){
-  skipped[id]=!skipped[id];
-  if(skipped[id])saved[id]=false;
-  try{localStorage.setItem('atx_skipped',JSON.stringify(skipped));}catch(e){}
   render();
 }
 
 function calUrl(s){
-  const title=encodeURIComponent(s.artist+' at '+s.venue);
-  const details=encodeURIComponent('Tickets: '+s.ticket);
-  const location=encodeURIComponent(s.venue+', Austin TX');
-  return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&details=${details}&location=${location}`;
+  return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(s.artist+' at '+s.venue)}&details=${encodeURIComponent('Tickets: '+s.ticket)}&location=${encodeURIComponent(s.venue+', Austin TX')}`;
 }
 
 function renderGoing(){
@@ -638,17 +486,11 @@ function renderGoing(){
   sec.classList.add('visible');
   document.getElementById('going-count').textContent=ids.length+' upcoming';
   document.getElementById('going-cards').innerHTML=ids.map(id=>{
-    const s=SHOWS.find(x=>x.id==id);
+    const s=SHOWS.find(x=>x.id==id);if(!s)return'';
     return `<div class="going-card">
-      <div class="going-card-left">
-        <div class="going-card-artist">${s.artist}</div>
-        <div class="going-card-meta">📍 ${s.venue} &nbsp;·&nbsp; 📅 ${s.day} &nbsp;·&nbsp; ${s.price}</div>
-      </div>
+      <div class="going-card-left"><div class="going-card-artist">${s.artist}</div><div class="going-card-meta">📍 ${s.venue} &nbsp;·&nbsp; 📅 ${s.day}${s.price?' · '+s.price:''}</div></div>
       <div class="going-card-actions">
-        <a href="${calUrl(s)}" target="_blank" class="gcal-btn">
-          <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-          Add to calendar
-        </a>
+        <a href="${calUrl(s)}" target="_blank" class="gcal-btn"><svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> Add to calendar</a>
         <a href="${s.ticket}" target="_blank" class="gtix-btn">Tickets</a>
         <button class="gungo-btn" onclick="toggleGoing(${s.id})" title="Remove">✕</button>
       </div>
@@ -656,25 +498,18 @@ function renderGoing(){
   }).join('');
 }
 
-function showTooltip(e, artistsStr){
+function showTooltip(e,artistsStr){
   e.stopPropagation();
   const tip=document.getElementById('disc-tip');
-  const artistsEl=document.getElementById('disc-tip-artists');
-  const names=artistsStr.split('|');
-  artistsEl.innerHTML=names.map(n=>`<div class="tooltip-artist">✦ ${n}</div>`).join('');
+  document.getElementById('disc-tip-artists').innerHTML=artistsStr.split('|').map(n=>`<div class="tooltip-artist">✦ ${n}</div>`).join('');
   const rect=e.target.getBoundingClientRect();
   tip.style.display='block';
   tip.style.top=(rect.bottom+8+window.scrollY)+'px';
   tip.style.left=Math.min(rect.left,window.innerWidth-260)+'px';
 }
-document.addEventListener('click',()=>{
-  const tip=document.getElementById('disc-tip');
-  if(tip) tip.style.display='none';
-});
+document.addEventListener('click',()=>{const t=document.getElementById('disc-tip');if(t)t.style.display='none';});
 
 buildDayPills();
 render();
 </script>
-
-
 </body></html>
