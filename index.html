@@ -59,7 +59,7 @@ input[type=text]:focus{outline:none;border-color:#d4f23c}
 
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
 
-.card{background:#2a2a2a;border:1.5px solid #3a3a3a;border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:border-color .15s,transform .1s,box-shadow .15s;box-shadow:0 4px 16px rgba(0,0,0,.5),0 1px 4px rgba(0,0,0,.4)}
+.card{background:#2a2a2a;border:1.5px solid #3a3a3a;border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:border-color .15s,transform .1s,box-shadow .15s;box-shadow:0 4px 16px rgba(0,0,0,.5),0 1px 4px rgba(0,0,0,.4);cursor:pointer}
 .card:hover{box-shadow:0 8px 24px rgba(0,0,0,.6),0 2px 8px rgba(0,0,0,.5);border-color:#484848}
 .card:active{transform:scale(.99)}
 .card.going{border-color:#d4f23c;background:#171c00}
@@ -253,7 +253,7 @@ input[type=text]:focus{outline:none;border-color:#d4f23c}
   <div class="tooltip-artists" id="disc-tip-artists"></div>
 </div>
 
-<button class="fab" onclick="render()" title="Refresh">
+<button class="fab" onclick="location.href=location.pathname+'?_='+Date.now()" title="Refresh">
   <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#0a0a0a" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
 </button>
 
@@ -313,10 +313,48 @@ let saved={},skipped={};
 try{saved=JSON.parse(localStorage.getItem('atx_saved')||'{}');}catch(e){}
 try{skipped=JSON.parse(localStorage.getItem('atx_skipped')||'{}');}catch(e){}
 
+
+// ── Dynamic week helpers ──────────────────────────────────
+// week is computed at runtime so app never goes stale between weekly updates.
+const MONTH_IDX={Jan:0,Feb:1,Mar:2,Apr:3,May:4,Jun:5,Jul:6,Aug:7,Sep:8,Oct:9,Nov:10,Dec:11};
+function parseShowDate(dayStr){
+  const p=dayStr.trim().split(/\s+/);
+  if(p.length<3)return null;
+  const now=new Date();
+  const mo=MONTH_IDX[p[1]];
+  if(mo===undefined)return null;
+  let yr=now.getFullYear();
+  if(mo<now.getMonth()-1)yr++;
+  const d=new Date(yr,mo,parseInt(p[2],10));
+  return isNaN(d.getTime())?null:d;
+}
+function getWeekMonday(d){
+  const dt=new Date(d);dt.setHours(0,0,0,0);
+  const day=dt.getDay();
+  dt.setDate(dt.getDate()-(day===0?6:day-1));
+  return dt;
+}
+function computeWeek(dayStr){
+  const show=parseShowDate(dayStr);
+  if(!show)return'other';
+  const today=new Date();today.setHours(0,0,0,0);
+  if(show<today)return'past';
+  const thisMonday=getWeekMonday(today);
+  const nextMonday=new Date(thisMonday);nextMonday.setDate(nextMonday.getDate()+7);
+  const afterNext=new Date(nextMonday);afterNext.setDate(afterNext.getDate()+7);
+  const month30=new Date(today);month30.setDate(month30.getDate()+30);
+  if(show<nextMonday)return'this';
+  if(show<afterNext)return'next';
+  if(show<=month30)return'month';
+  return'summer';
+}
+// ─────────────────────────────────────────────────────
 function matchWeek(s){
-  if(activeWeek==='this') return s.week==='this';
-  if(activeWeek==='next') return s.week==='this'||s.week==='next';
-  return true; // 'all' tab shows everything
+  const w=computeWeek(s.day);
+  if(w==='past')return false;
+  if(activeWeek==='this')return w==='this';
+  if(activeWeek==='next')return w==='this'||w==='next';
+  return true;
 }
 function matchDay(s){return dayFilter==='all'||s.day===dayFilter;}
 function matchQ(s){
@@ -380,7 +418,7 @@ function cardHTML(s){
   const badge=s.match==='high'?'<span class="badge badge-high">★ Top pick</span>':s.match==='medium'?'<span class="badge badge-med">↗ You\'ll dig</span>':'<span class="badge badge-disc">✦ Discovery</span>';
   const gc=GENRE_CLASS[s.genre]||'g-indie';
   const ytUrl=`https://www.youtube.com/results?search_query=${encodeURIComponent(s.artist+' '+(s.topSong||'')+' official')}`;
-  return `<div class="card${isGoing?' going':isSkip?' skipped':''}" id="card-${s.id}">
+  return `<div class="card${isGoing?' going':isSkip?' skipped':''}" id="card-${s.id}" data-ticket="${s.ticket}" onclick="if(!event.target.closest('a,button'))window.open(this.dataset.ticket,'_blank')">
     <div class="card-accent ${accentClass}"></div>
     <div class="card-body">
       <div class="card-top"><div class="card-artist">${s.artist}</div><span class="genre-tag ${gc}">${s.genre}</span></div>
@@ -481,7 +519,10 @@ function toggleGoing(id){
 }
 
 function calUrl(s){
-  return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(s.artist+' at '+s.venue)}&details=${encodeURIComponent('Tickets: '+s.ticket)}&location=${encodeURIComponent(s.venue+', Austin TX')}`;
+const d=parseShowDate(s.day);
+const ds=d?`${d.getFullYear()}${String(d.getMonth()+1).padStart(2,'0')}${String(d.getDate()).padStart(2,'0')}`:null;
+const dates=ds?`&dates=${ds}/${ds}`:'';
+return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(s.artist+' at '+s.venue)}${dates}&details=${encodeURIComponent('Tickets: '+s.ticket)}&location=${encodeURIComponent(s.venue+', Austin TX')}`;
 }
 
 function renderGoing(){
